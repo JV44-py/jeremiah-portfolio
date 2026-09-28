@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jeremiah Vitug — Junior Web Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0A0C10;
+  --bg-elevated: #12151C;
+  --bg-card: #14171F;
+  --text: #F5F6F8;
+  --text-muted: #9AA1AE;
+  --border: #212530;
+  --accent: #A855F7;
+  --accent-strong: #C084FC;
+}
+
+html[data-theme="light"] {
+  --bg: #FAFAFC;
+  --bg-elevated: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --text: #14171F;
+  --text-muted: #5B6270;
+  --border: #E4E4EA;
+  --accent: #7C3AED;
+  --accent-strong: #6D28D9;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ---------- Nav ---------- */
+.site-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px clamp(20px, 5vw, 56px);
+  background: linear-gradient(to bottom, rgba(10,12,16,0.85), transparent);
+}
+html[data-theme="light"] .site-nav {
+  background: linear-gradient(to bottom, rgba(250,250,252,0.9), transparent);
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  color: var(--text);
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  border-radius: 8px;
+}
+.theme-toggle:hover { background: rgba(255,255,255,0.06); }
+html[data-theme="light"] .theme-toggle:hover { background: rgba(0,0,0,0.05); }
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 34px;
+  margin: 0;
+  padding: 0;
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+.nav-links a {
+  color: var(--text-muted);
+  padding-bottom: 3px;
+  border-bottom: 1px solid transparent;
+}
+.nav-links a:hover { color: var(--text); border-bottom-color: var(--accent); }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+.nav-toggle span { width: 22px; height: 2px; background: var(--text); display: block; }
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero-waves {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding: 0 clamp(20px, 8vw, 96px);
+}
+
+.hero-avatar {
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  object-fit: cover;
+  filter: grayscale(1);
+  border: 2px solid var(--border);
+  background: var(--bg-elevated);
+  flex-shrink: 0;
+}
+
+.hero-socials {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.hero-socials a { color: var(--text); opacity: 0.85; }
+.hero-socials a:hover { opacity: 1; color: var(--accent-strong); }
+
+.hero-name {
+  font-size: clamp(2.6rem, 6vw, 4.2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 8px;
+  line-height: 1.05;
+}
+
+.hero-role {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  margin: 0;
+  font-weight: 500;
+}
+
+/* ---------- Sections ---------- */
+.section {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 110px clamp(20px, 6vw, 40px) 0;
+  scroll-margin-top: 90px;
+}
+.section:last-of-type { padding-bottom: 120px; }
+
+.section-kicker {
+  font-size: 0.82rem;
+  color: var(--accent);
+  font-weight: 600;
+  margin: 0 0 6px;
+  letter-spacing: 0.01em;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 40px;
+  letter-spacing: -0.01em;
+}
+
+/* Expertise */
+.expertise-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 34px;
+}
+.expertise-group h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0 0 14px;
+  color: var(--text);
+}
+.tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag {
+  font-size: 0.82rem;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  background: var(--bg-elevated);
+}
+
+/* History timeline */
+.timeline { display: flex; flex-direction: column; gap: 44px; }
+.timeline-item { display: flex; gap: 22px; }
+.timeline-marker {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-top: 8px;
+  flex-shrink: 0;
+}
+.timeline-period {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin: 0 0 4px;
+}
+.timeline-role { font-size: 1.15rem; font-weight: 600; margin: 0 0 2px; }
+.timeline-org { color: var(--text-muted); font-size: 0.92rem; margin: 0 0 14px; }
+
+.diff-list { list-style: none; margin: 0; padding: 0; }
+.diff-list li {
+  position: relative;
+  padding: 4px 0 4px 20px;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+.diff-list li::before {
+  content: "+";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* Projects */
+.project-list { display: flex; flex-direction: column; gap: 26px; }
+.project-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px 30px;
+}
+.project-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+.project-card-head h3 { font-size: 1.1rem; font-weight: 600; margin: 0; }
+.project-meta { font-size: 0.8rem; color: var(--text-muted); white-space: nowrap; }
+.project-desc { color: var(--text-muted); margin: 0 0 14px; font-size: 0.95rem; }
+.project-stat {
+  display: inline-block;
+  font-size: 0.82rem;
+  color: var(--accent-strong);
+  background: rgba(168,85,247,0.1);
+  padding: 5px 10px;
+  border-radius: 6px;
+  margin-top: 12px;
+}
+.project-card .tag-row { margin-top: 16px; }
+.project-link {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--accent-strong);
+  border-bottom: 1px solid rgba(168,85,247,0.4);
+}
+.project-link:hover { border-bottom-color: var(--accent-strong); }
+
+/* Contact */
+.contact-lead { color: var(--text-muted); max-width: 52ch; margin: 0 0 30px; }
+.contact-list { list-style: none; margin: 0; padding: 0; max-width: 480px; }
+.contact-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.95rem;
+}
+.contact-list li:last-child { border-bottom: none; }
+.contact-label { color: var(--text-muted); }
+.contact-list a:hover { color: var(--accent-strong); }
+
+/* Footer */
+.site-footer {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  padding: 40px 20px 50px;
+  border-top: 1px solid var(--border);
+  margin-top: 40px;
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 720px) {
+  .nav-links {
+    position: fixed;
+    top: 68px; right: 20px;
+    flex-direction: column;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 22px;
+    gap: 16px;
+    display: none;
+  }
+  .nav-links.open { display: flex; }
+  .nav-toggle { display: flex; }
+
+  .hero-content { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .hero-avatar { width: 84px; height: 84px; }
+  .section { padding-top: 80px; }
+}
+
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle light and dark theme">
+    <svg id="iconSun" class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+      <circle cx="12" cy="12" r="4.2"/>
+      <path d="M12 2.5v3M12 18.5v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2.5 12h3M18.5 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>
+    </svg>
+    <svg id="iconMoon" class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="display:none">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z"/>
+    </svg>
+  </button>
+  <button id="navToggle" class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#history">History</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+<main>
+<section class="hero" id="top">
+  <svg class="hero-waves" viewBox="0 0 1280 640" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="waveGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#7C3AED"/>
+        <stop offset="55%" stop-color="#A855F7"/>
+        <stop offset="100%" stop-color="#E879F9"/>
+      </linearGradient>
+    </defs>
+    <g>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, -17)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.315"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, -16.24)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.341"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, -15.49)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.367"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, -14.73)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.393"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, -13.98)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.419"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, -13.22)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.445"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, -12.47)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.471"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, -11.71)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.497"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, -10.96)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.523"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, -10.2)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.549"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, -9.44)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.575"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, -8.69)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.601"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, -7.93)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.627"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, -7.18)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.653"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, -6.42)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.679"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, -5.67)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.705"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, -4.91)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.731"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, -4.16)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.757"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, -3.4)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.783"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, -2.64)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.809"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, -1.89)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.835"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, -1.13)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.861"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, -0.38)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.887"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, 0.38)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.887"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, 1.13)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.861"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, 1.89)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.835"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, 2.64)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.809"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, 3.4)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.783"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, 4.16)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.757"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, 4.91)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.731"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, 5.67)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.705"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, 6.42)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.679"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, 7.18)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.653"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, 7.93)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.627"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, 8.69)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.601"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, 9.44)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.575"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, 10.2)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.549"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, 10.96)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.523"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, 11.71)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.497"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, 12.47)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.471"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, 13.22)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.445"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, 13.98)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.419"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, 14.73)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.393"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, 15.49)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.367"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, 16.24)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.341"/>
+<path d="M -60,440 C 90,410 170,340 250,320 C 380,290 430,230 540,210 C 660,188 720,120 840,95 C 940,74 995,105 1080,68 C 1160,34 1200,-10 1340,-40" transform="translate(0, 17)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.315"/>
+</g>
+<g>
+<path d="M -60,560 C 40,520 110,470 210,470 C 330,470 360,540 200,565 C 70,585 -20,545 -60,560" transform="translate(0, -8)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.193"/>
+<path d="M -60,560 C 40,520 110,470 210,470 C 330,470 360,540 200,565 C 70,585 -20,545 -60,560" transform="translate(0, -7.16)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.23"/>
+<path d="M -60,560 C 40,520 110,470 210,470 C 330,470 360,540 200,565 C 70,585 -20,545 -60,560" transform="translate(0, -6.32)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.268"/>
+<path d="M -60,560 C 40,520 110,470 210,470 C 330,470 360,540 200,565 C 70,585 -20,545 -60,560" transform="translate(0, -5.47)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.305"/>
+<path d="M -60,560 C 40,520 110,470 210,470 C 330,470 360,540 200,565 C 70,585 -20,545 -60,560" transform="translate(0, -4.63)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.343"/>
+<path d="M -60,560 C 40,520 110,470 210,470 C 330,470 360,540 200,565 C 70,585 -20,545 -60,560" transform="translate(0, -3.79)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.381"/>
+<path d="M -60,560 C 40,520 110,470 210,470 C 330,470 360,540 200,565 C 70,585 -20,545 -60,560" transform="translate(0, -2.95)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.418"/>
+<path d="M -60,560 C 40,520 110,470 210,470 C 330,470 360,540 200,565 C 70,585 -20,545 -60,560" transform="translate(0, -2.11)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.456"/>
+<path d="M -60,560 C 40,520 110,470 210,470 C 330,470 360,540 200,565 C 70,585 -20,545 -60,560" transform="translate(0, -1.26)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.494"/>
+<path d="M -60,560 C 40,520 110,470 210,470 C 330,470 360,540 200,565 C 70,585 -20,545 -60,560" transform="translate(0, -0.42)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.531"/>
+<path d="M -60,560 C 40,520 110,470 210,470 C 330,470 360,540 200,565 C 70,585 -20,545 -60,560" transform="translate(0, 0.42)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.531"/>
+<path d="M -60,560 C 40,520 110,470 210,470 C 330,470 360,540 200,565 C 70,585 -20,545 -60,560" transform="translate(0, 1.26)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.494"/>
+<path d="M -60,560 C 40,520 110,470 210,470 C 330,470 360,540 200,565 C 70,585 -20,545 -60,560" transform="translate(0, 2.11)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.456"/>
+<path d="M -60,560 C 40,520 110,470 210,470 C 330,470 360,540 200,565 C 70,585 -20,545 -60,560" transform="translate(0, 2.95)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.418"/>
+<path d="M -60,560 C 40,520 110,470 210,470 C 330,470 360,540 200,565 C 70,585 -20,545 -60,560" transform="translate(0, 3.79)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.381"/>
+<path d="M -60,560 C 40,520 110,470 210,470 C 330,470 360,540 200,565 C 70,585 -20,545 -60,560" transform="translate(0, 4.63)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.343"/>
+<path d="M -60,560 C 40,520 110,470 210,470 C 330,470 360,540 200,565 C 70,585 -20,545 -60,560" transform="translate(0, 5.47)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.305"/>
+<path d="M -60,560 C 40,520 110,470 210,470 C 330,470 360,540 200,565 C 70,585 -20,545 -60,560" transform="translate(0, 6.32)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.268"/>
+<path d="M -60,560 C 40,520 110,470 210,470 C 330,470 360,540 200,565 C 70,585 -20,545 -60,560" transform="translate(0, 7.16)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.23"/>
+<path d="M -60,560 C 40,520 110,470 210,470 C 330,470 360,540 200,565 C 70,585 -20,545 -60,560" transform="translate(0, 8)" fill="none" stroke="url(#waveGradient)" stroke-width="1.1" stroke-opacity="0.193"/>
+</g>
+
+  </svg>
+  <div class="hero-content">
+    <img class="hero-avatar" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTEyIiBoZWlnaHQ9IjExMiIgdmlld0JveD0iMCAwIDExMiAxMTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGNpcmNsZSBjeD0iNTYiIGN5PSI1NiIgcj0iNTYiIGZpbGw9IiMyMDI0MkUiLz4KICA8Y2lyY2xlIGN4PSI1NiIgY3k9IjQ2IiByPSIyMCIgZmlsbD0iIzQ1NEI1OCIvPgogIDxwYXRoIGQ9Ik0xOCAxMDBjNC0yMiAyMi0zNCAzOC0zNHMzNCAxMiAzOCAzNCIgZmlsbD0iIzQ1NEI1OCIvPgo8L3N2Zz4K" alt="Jeremiah Vitug" width="112" height="112">
+    <div class="hero-text">
+      <div class="hero-socials">
+        <a href="https://github.com/JV44-py" target="_blank" rel="noopener" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.38 7.86 10.9.58.1.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.04-.72.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.75 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.24 2.76.12 3.05.74.8 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.07.78 2.16 0 1.56-.01 2.82-.01 3.2 0 .31.2.67.8.56A10.52 10.52 0 0 0 23.5 12c0-6.35-5.15-11.5-11.5-11.5Z"/></svg></a>
+        <a href="https://linkedin.com/in/jeremiahvitug" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.48v6.26ZM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg></a>
+      </div>
+      <h1 class="hero-name">Jeremiah Vitug</h1>
+      <p class="hero-role">Junior Web Developer</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="expertise">
+  <p class="section-kicker">01</p>
+  <h2 class="section-title">Expertise</h2>
+  <div class="expertise-grid">
+    <div class="expertise-group"><h3>Languages</h3><div class="tag-row"><span class="tag">PHP</span><span class="tag">JavaScript</span><span class="tag">Python</span><span class="tag">Java</span><span class="tag">C#</span><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">SQL</span></div></div>
+<div class="expertise-group"><h3>Frameworks &amp; Libraries</h3><div class="tag-row"><span class="tag">Laravel</span><span class="tag">Django</span><span class="tag">Django REST Framework</span><span class="tag">Bootstrap 4/5</span><span class="tag">ASP.NET</span></div></div>
+<div class="expertise-group"><h3>Databases</h3><div class="tag-row"><span class="tag">MySQL</span><span class="tag">PostgreSQL</span><span class="tag">Supabase</span><span class="tag">SQLite</span></div></div>
+<div class="expertise-group"><h3>Tools &amp; Platforms</h3><div class="tag-row"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">VS Code</span><span class="tag">phpMyAdmin</span><span class="tag">Figma</span><span class="tag">Unity</span></div></div>
+<div class="expertise-group"><h3>Concepts</h3><div class="tag-row"><span class="tag">OOP</span><span class="tag">REST APIs</span><span class="tag">CRUD</span><span class="tag">JWT Authentication</span><span class="tag">Agile Methodology</span><span class="tag">ERD &amp; Use Case Modeling</span><span class="tag">Responsive Design</span><span class="tag">Role-Based Access Control</span><span class="tag">PDF Report Generation</span><span class="tag">QR Code Integration</span><span class="tag">File Upload Handling</span></div></div>
+
+  </div>
+</section>
+
+<section class="section" id="history">
+  <p class="section-kicker">02</p>
+  <h2 class="section-title">History</h2>
+  <div class="timeline">
+    <div class="timeline-item"><div class="timeline-marker"></div><div class="timeline-body"><p class="timeline-period">2026</p><h3 class="timeline-role">IT Support &amp; Software Development Intern</h3><p class="timeline-org">National Housing Authority (NHA) — COSDD</p><ul class="diff-list"><li>Provided IT support and helpdesk assistance to NHA-COSDD staff, diagnosing and resolving hardware and software issues across office workstations.</li><li>Performed OS formatting and reinstallation, software installation and configuration, and office network setup for government department computers.</li><li>Troubleshot user-reported hardware and software issues, coordinating timely resolutions to minimize downtime.</li><li>Developed an IT Support Ticketing System using PHP, MySQL, and JavaScript with role-based access, ticket lifecycle management, and a responsive admin dashboard.</li></ul></div></div>
+<div class="timeline-item"><div class="timeline-marker"></div><div class="timeline-body"><p class="timeline-period">July 2026</p><h3 class="timeline-role">B.S. Computer Science</h3><p class="timeline-org">STI College Muñoz-EDSA</p><ul class="diff-list"><li>Thesis: Centralized Web-Based POS and Inventory Management System for Meogeo Sarang Korean Mart.</li></ul></div></div>
+
+  </div>
+</section>
+
+<section class="section" id="projects">
+  <p class="section-kicker">03</p>
+  <h2 class="section-title">Projects</h2>
+  <div class="project-list">
+    <article class="project-card"><div class="project-card-head"><h3>Centralized Web-Based POS &amp; Inventory Management System</h3><span class="project-meta">Thesis Capstone · 2024–2025</span></div><p class="project-desc">A centralized POS and inventory platform for a 4-branch retail client in Nueva Vizcaya, replacing a fragmented Android POS and manual, Excel-based tracking process with one real-time system.</p><ul class="diff-list"><li>Barcode-scanner integration, paperless digital receipts, low-stock and product-expiry alerts.</li><li>Multi-method payment support (cash, GCash, wholesale pay-later).</li><li>Role-based access control for four user levels, built with Agile methodology, ERD and Use Case modeling.</li></ul><p class="project-stat">ISO 9126 evaluation — 4.55 / 5.0 across 31 respondents</p><div class="tag-row"><span class="tag">JavaScript</span><span class="tag">Bootstrap</span><span class="tag">Supabase</span><span class="tag">PostgreSQL</span><span class="tag">Figma</span></div></article>
+<article class="project-card"><div class="project-card-head"><h3>HabitFlow — Habit Tracker Web App</h3><span class="project-meta">Personal Project · 2026</span></div><p class="project-desc">A production-ready habit tracking web app with authentication, streaks, XP/leveling, and achievement badges.</p><ul class="diff-list"><li>Full authentication via Supabase Auth (JWT); habit CRUD with streak tracking, XP/leveling, and badges.</li><li>REST API built with Django REST Framework covering dashboard analytics, a calendar heatmap, and productivity scoring.</li><li>Deployed with WhiteNoise and a custom dark/light-mode CSS design system.</li></ul><div class="tag-row"><span class="tag">Django</span><span class="tag">Python</span><span class="tag">Supabase</span><span class="tag">PostgreSQL</span><span class="tag">Chart.js</span><span class="tag">Tailwind CSS</span></div><a class="project-link" href="https://github.com/JV44-py/habitflow" target="_blank" rel="noopener">View repository</a></article>
+<article class="project-card"><div class="project-card-head"><h3>Company Asset Management System</h3><span class="project-meta">Personal Project · 2026</span></div><p class="project-desc">A full CRUD system for tracking company hardware assets across six relational database tables, with role-based access.</p><ul class="diff-list"><li>Asset-to-employee assignment workflows with return history and auto-generated per-asset QR codes.</li><li>Maintenance log with file-upload support for receipts and reports.</li><li>Warranty tracker flagging expiring/expired coverage, plus PDF report generation via Dompdf.</li></ul><div class="tag-row"><span class="tag">Laravel</span><span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">Tailwind CSS</span><span class="tag">Dompdf</span><span class="tag">QR Codes</span></div></article>
+
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <p class="section-kicker">04</p>
+  <h2 class="section-title">Contact</h2>
+  <p class="contact-lead">Open to Junior Web Developer and Software Developer roles — based in Quezon City, Philippines.</p>
+  <ul class="contact-list">
+    <li><span class="contact-label">Email</span><a href="mailto:vitugjeremiah38@gmail.com">vitugjeremiah38@gmail.com</a></li>
+    <li><span class="contact-label">Phone</span><a href="tel:+630961-066-1856">0961-066-1856</a></li>
+    <li><span class="contact-label">GitHub</span><a href="https://github.com/JV44-py" target="_blank" rel="noopener">github.com/JV44-py</a></li>
+    <li><span class="contact-label">LinkedIn</span><a href="https://linkedin.com/in/jeremiahvitug" target="_blank" rel="noopener">linkedin.com/in/jeremiahvitug</a></li>
+  </ul>
+</section>
+</main>
+<footer class="site-footer"><p>&copy; 2026 Jeremiah Vitug. Built with Laravel.</p></footer>
+<script>
+(function () {
+  var root = document.documentElement;
+  var toggle = document.getElementById('themeToggle');
+  var iconSun = document.getElementById('iconSun');
+  var iconMoon = document.getElementById('iconMoon');
+
+  function applyTheme(theme) {
+    root.setAttribute('data-theme', theme);
+    iconSun.style.display = theme === 'dark' ? 'block' : 'none';
+    iconMoon.style.display = theme === 'light' ? 'block' : 'none';
+  }
+
+  var stored = localStorage.getItem('theme');
+  var preferred = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+  applyTheme(preferred);
+
+  toggle.addEventListener('click', function () {
+    var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+    localStorage.setItem('theme', next);
+  });
+
+  var navToggle = document.getElementById('navToggle');
+  var navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', function () {
+    var open = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', String(open));
+  });
+  navLinks.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      navLinks.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
+
+</script>
+</body>
+</html>
