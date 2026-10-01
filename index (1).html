@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jeremiah Vitug — Junior Web Developer</title>
+<title>Jeremiah Vitug — Junior Web Developer &amp; Data Analyst</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -275,6 +275,10 @@ html[data-theme="light"] .theme-toggle:hover { background: rgba(0,0,0,0.05); }
 }
 .project-link:hover { border-bottom-color: var(--accent-strong); }
 
+.project-shot { margin: 6px 0 4px; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.project-shot img { display: block; width: 100%; height: auto; }
+.project-shot-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin: 6px 0 4px; }
+
 /* Contact */
 .contact-lead { color: var(--text-muted); max-width: 52ch; margin: 0 0 30px; }
 .contact-list { list-style: none; margin: 0; padding: 0; max-width: 480px; }
@@ -433,7 +437,7 @@ html[data-theme="light"] .theme-toggle:hover { background: rgba(0,0,0,0.05); }
         <a href="https://www.linkedin.com/in/jeremiah-vitug-93a6573b2" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.48v6.26ZM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg></a>
       </div>
       <h1 class="hero-name">Jeremiah Vitug</h1>
-      <p class="hero-role">Junior Web Developer</p>
+      <p class="hero-role">Junior Web Developer · Data Analyst</p>
     </div>
   </div>
 </section>
@@ -442,10 +446,11 @@ html[data-theme="light"] .theme-toggle:hover { background: rgba(0,0,0,0.05); }
   <p class="section-kicker">01</p>
   <h2 class="section-title">Expertise</h2>
   <div class="expertise-grid">
-    <div class="expertise-group"><h3>Languages</h3><div class="tag-row"><span class="tag">PHP</span><span class="tag">JavaScript</span><span class="tag">Python</span><span class="tag">Java</span><span class="tag">C#</span><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">SQL</span></div></div>
+    <div class="expertise-group"><h3>Data &amp; Analytics</h3><div class="tag-row"><span class="tag">ETL</span><span class="tag">Data Modeling</span><span class="tag">Star Schema</span><span class="tag">Data Warehousing</span><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Data Visualization</span></div></div>
+<div class="expertise-group"><h3>Languages</h3><div class="tag-row"><span class="tag">PHP</span><span class="tag">JavaScript</span><span class="tag">Python</span><span class="tag">Java</span><span class="tag">C#</span><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">SQL</span></div></div>
 <div class="expertise-group"><h3>Frameworks &amp; Libraries</h3><div class="tag-row"><span class="tag">Laravel</span><span class="tag">Django</span><span class="tag">Django REST Framework</span><span class="tag">Bootstrap 4/5</span><span class="tag">ASP.NET</span></div></div>
-<div class="expertise-group"><h3>Databases</h3><div class="tag-row"><span class="tag">MySQL</span><span class="tag">PostgreSQL</span><span class="tag">Supabase</span><span class="tag">SQLite</span></div></div>
-<div class="expertise-group"><h3>Tools &amp; Platforms</h3><div class="tag-row"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">VS Code</span><span class="tag">phpMyAdmin</span><span class="tag">Figma</span><span class="tag">Unity</span></div></div>
+<div class="expertise-group"><h3>Databases</h3><div class="tag-row"><span class="tag">MySQL</span><span class="tag">PostgreSQL</span><span class="tag">Supabase</span><span class="tag">SQLite</span><span class="tag">Microsoft Dataverse</span></div></div>
+<div class="expertise-group"><h3>Tools &amp; Platforms</h3><div class="tag-row"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">VS Code</span><span class="tag">phpMyAdmin</span><span class="tag">Figma</span><span class="tag">Unity</span><span class="tag">Power BI Desktop</span><span class="tag">Power Apps</span><span class="tag">Power Automate</span></div></div>
 <div class="expertise-group"><h3>Concepts</h3><div class="tag-row"><span class="tag">OOP</span><span class="tag">REST APIs</span><span class="tag">CRUD</span><span class="tag">JWT Authentication</span><span class="tag">Agile Methodology</span><span class="tag">ERD &amp; Use Case Modeling</span><span class="tag">Responsive Design</span><span class="tag">Role-Based Access Control</span><span class="tag">PDF Report Generation</span><span class="tag">QR Code Integration</span><span class="tag">File Upload Handling</span></div></div>
 
   </div>
@@ -465,6 +470,13 @@ html[data-theme="light"] .theme-toggle:hover { background: rgba(0,0,0,0.05); }
   <p class="section-kicker">03</p>
   <h2 class="section-title">Projects</h2>
   <div class="project-list">
+    <article class="project-card"><div class="project-card-head"><h3>POS Data Pipeline — PostgreSQL, Python &amp; Power BI</h3><span class="project-meta">Personal Project · 2026</span></div><p class="project-desc">An end-to-end data engineering project for a multi-branch retail store: synthetic POS data flows through an incremental ETL into a star-schema warehouse and is reported in a Power BI dashboard.</p><ul class="diff-list"><li>Incremental ETL in Python using watermarks and idempotent upserts, run in a single transaction so a failed load leaves no partial data.</li><li>Star-schema warehouse (one fact table, four dimensions) with a Type 2 slowly changing dimension for product price history, plus reconciliation checks between layers.</li><li>Power BI dashboard with DAX measures for revenue, gross margin, transactions, and average basket by month, branch, and product category.</li></ul><figure class="project-shot"><img src="images/dashboard.png" alt="Power BI sales dashboard showing revenue, gross margin, transactions, average basket, revenue by month, revenue by city, and gross margin by category" loading="lazy"></figure><p class="project-stat">About 107K sales · 267K line items · 5 branches · 12 months of synthetic data</p><div class="tag-row"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">PostgreSQL</span><span class="tag">Supabase</span><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">ETL</span></div><a class="project-link" href="https://github.com/JV44-py/pos-data-pipeline" target="_blank" rel="noopener">View repository</a></article>
+<article class="project-card"><div class="project-card-head"><h3>IT Service Desk Ticketing App</h3><span class="project-meta">Personal Project · 2026</span></div><p class="project-desc">A ticketing app built with Power Apps and Dataverse, with separate screens for requesters and staff.</p><ul class="diff-list"><li>Live status dashboard built with Power Fx, plus validated create/edit forms with search and filtering.</li><li>Per-status email notifications automated with Power Automate.</li><li>Resolved delegation warnings and Dataverse choice-column type mismatches.</li></ul><!-- SCREENSHOTS: save 2-3 app screenshots in the images folder, then uncomment and fix the file names:
+<div class="project-shot-row">
+  <figure class="project-shot"><img src="images/ticketing-dashboard.png" alt="Service desk status dashboard in Power Apps" loading="lazy"></figure>
+  <figure class="project-shot"><img src="images/ticketing-form.png" alt="Create ticket form in Power Apps" loading="lazy"></figure>
+</div>
+--><div class="tag-row"><span class="tag">Power Apps</span><span class="tag">Power Fx</span><span class="tag">Dataverse</span><span class="tag">Power Automate</span></div></article>
     <article class="project-card"><div class="project-card-head"><h3>Centralized Web-Based POS &amp; Inventory Management System</h3><span class="project-meta">Thesis Capstone · 2024–2025</span></div><p class="project-desc">A centralized POS and inventory platform for a 4-branch retail client in Nueva Vizcaya, replacing a fragmented Android POS and manual, Excel-based tracking process with one real-time system.</p><ul class="diff-list"><li>Barcode-scanner integration, paperless digital receipts, low-stock and product-expiry alerts.</li><li>Multi-method payment support (cash, GCash, wholesale pay-later).</li><li>Role-based access control for four user levels, built with Agile methodology, ERD and Use Case modeling.</li></ul><p class="project-stat">ISO 9126 evaluation — 4.55 / 5.0 across 31 respondents</p><div class="tag-row"><span class="tag">JavaScript</span><span class="tag">Bootstrap</span><span class="tag">Supabase</span><span class="tag">PostgreSQL</span><span class="tag">Figma</span></div></article>
 <article class="project-card"><div class="project-card-head"><h3>HabitFlow — Habit Tracker Web App</h3><span class="project-meta">Personal Project · 2026</span></div><p class="project-desc">A production-ready habit tracking web app with authentication, streaks, XP/leveling, and achievement badges.</p><ul class="diff-list"><li>Full authentication via Supabase Auth (JWT); habit CRUD with streak tracking, XP/leveling, and badges.</li><li>REST API built with Django REST Framework covering dashboard analytics, a calendar heatmap, and productivity scoring.</li><li>Deployed with WhiteNoise and a custom dark/light-mode CSS design system.</li></ul><div class="tag-row"><span class="tag">Django</span><span class="tag">Python</span><span class="tag">Supabase</span><span class="tag">PostgreSQL</span><span class="tag">Chart.js</span><span class="tag">Tailwind CSS</span></div><a class="project-link" href="https://github.com/JV44-py/habitflow" target="_blank" rel="noopener">View repository</a></article>
 <article class="project-card"><div class="project-card-head"><h3>Company Asset Management System</h3><span class="project-meta">Personal Project · 2026</span></div><p class="project-desc">A full CRUD system for tracking company hardware assets across six relational database tables, with role-based access.</p><ul class="diff-list"><li>Asset-to-employee assignment workflows with return history and auto-generated per-asset QR codes.</li><li>Maintenance log with file-upload support for receipts and reports.</li><li>Warranty tracker flagging expiring/expired coverage, plus PDF report generation via Dompdf.</li></ul><div class="tag-row"><span class="tag">Laravel</span><span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">Tailwind CSS</span><span class="tag">Dompdf</span><span class="tag">QR Codes</span></div></article>
@@ -475,7 +487,7 @@ html[data-theme="light"] .theme-toggle:hover { background: rgba(0,0,0,0.05); }
 <section class="section" id="contact">
   <p class="section-kicker">04</p>
   <h2 class="section-title">Contact</h2>
-  <p class="contact-lead">Open to Junior Web Developer and Software Developer roles — based in Quezon City, Philippines.</p>
+  <p class="contact-lead">Open to Junior Web Developer, Software Developer, Data Analyst, and Junior Data Engineer roles — based in Quezon City, Philippines.</p>
   <ul class="contact-list">
     <li><span class="contact-label">Email</span><a href="mailto:vitugjeremiah38@gmail.com">vitugjeremiah38@gmail.com</a></li>
     <li><span class="contact-label">Phone</span><a href="tel:+630961-066-1856">0961-066-1856</a></li>
