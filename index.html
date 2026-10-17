@@ -77,6 +77,8 @@ ul.b li::before{content:"–";position:absolute;left:0;opacity:.6}
 .rv.in{opacity:1;transform:none;filter:none}
 .pj:nth-child(odd){--tx:-44px}.pj:nth-child(even){--tx:44px}
 .grp.in .tile{animation:pop .55s cubic-bezier(.3,1.5,.5,1) backwards;animation-delay:calc(var(--i,0)*45ms)}
+.gal{display:grid;grid-template-columns:repeat(2,1fr);gap:22px 14px;margin:16px 0 4px}.gal figure{margin:0}.gal figcaption{font-size:.84rem;line-height:1.55;margin-top:9px;opacity:.85}.gal figcaption b{display:block;font-weight:600;margin-bottom:2px;opacity:1}@media(max-width:560px){.gal{grid-template-columns:1fr}}.gal img{margin:0!important;cursor:zoom-in;transition:.3s}.gal img:hover{filter:none;transform:scale(1.02)}
+#lb{position:fixed;inset:0;z-index:60;display:none;place-items:center;background:rgba(0,0,0,.93);padding:3vw;cursor:zoom-out}#lb.on{display:grid}#lb img{max-width:100%;max-height:100%;border:1px solid rgba(255,255,255,.5)}
 .hint{font-size:.8rem;margin-top:34px!important}
 @media(max-width:720px){.tile{width:84px}.pj{padding:20px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
@@ -114,6 +116,7 @@ ul.b li::before{content:"–";position:absolute;left:0;opacity:.6}
   </section>
 </main>
 
+<div id="lb" role="dialog" aria-label="Enlarged image"><img alt=""></div>
 <noscript><style>.rv{opacity:1!important;transform:none!important;filter:none!important}</style></noscript>
 
 <script>
@@ -129,7 +132,13 @@ const LOG=[
 ["2026","IT Support and Software Development Intern","National Housing Authority (NHA), COSDD",["Gave helpdesk support to office staff: diagnosed hardware and software issues, reinstalled operating systems, and set up software and office networks.","Built an IT Support Ticketing System in PHP, MySQL, and JavaScript with role-based access, ticket lifecycle tracking, and a responsive admin dashboard."]],
 ["July 2026","B.S. Computer Science","STI College Muñoz-EDSA",["Thesis: Centralized Web-Based POS and Inventory Management System for Meogeo Sarang Korean Mart."]]];
 const PROJ=[
-{t:"E-commerce Operations and Customer Analysis",y:"2026, synthetic data",d:"Why do customers stop buying? Repeat purchases, cancellations, and late deliveries for a Philippine online store.",b:["PostgreSQL schema on Supabase, a Python ETL loader, and 9 SQL views using CTEs, window functions, and cohort retention.","Validated in Python with a chi-square test: COD orders cancel at twice the rate of e-wallet orders.","4-page Power BI dashboard with DAX measures, a cohort matrix, and a courier-by-region late-delivery heatmap."],s:"11K orders, 8K customers. A late first delivery cuts repeat purchases from 36.8% to about 20%.",g:["SQL","Python","PostgreSQL","Supabase","Power BI","DAX"],l:"https://github.com/JV44-py/ecommerce-ops-customer-analysis",i:"images/ecommerce-dashboard.png",a:"Power BI dashboard showing cancellation and delivery metrics"},
+{t:"E-commerce Operations and Customer Analysis",y:"2026, synthetic data",d:"Why do customers stop buying? Repeat purchases, cancellations, and late deliveries for a Philippine online store.",b:["PostgreSQL schema on Supabase, a Python ETL loader, and 9 SQL views using CTEs, window functions, and cohort retention.","Validated in Python with a chi-square test: COD orders cancel at twice the rate of e-wallet orders.","4-page Power BI dashboard with DAX measures, a cohort matrix, and a courier-by-region late-delivery heatmap."],s:"11K orders, 8K customers. A late first delivery cuts repeat purchases from 36.8% to about 20%.",g:["SQL","Python","PostgreSQL","Supabase","Power BI","DAX"],l:"https://github.com/JV44-py/ecommerce-ops-customer-analysis",m:[
+{u:"images/page1.png",t:"Overview",c:"Out of about 11K orders, 10.7% were cancelled, 33.5% of shipped orders arrived late, and 30.1% of customers ordered again. The line chart tracks the cancel and late rates by month, and the region and channel filters update every number."},
+{u:"images/page2.png",t:"Repeat purchases and retention",c:"Referral and email customers come back about twice as often as TikTok and Facebook Ads customers. Customers whose first order arrived on time reordered about 37% of the time, versus about 20% after a late or cancelled first order. The table is a win-back list of customers with a bad experience who haven't returned."},
+{u:"images/page3.png",t:"Cancellations",c:"COD makes up 659 of the 1,181 cancelled orders and has the highest cancel rate at 15.8%. GCash, Maya, and card orders sit between 6.7% and 8%. The most common reasons are changing their mind, slow delivery, and finding a cheaper price."},
+{u:"images/page4.png",t:"Delivery performance",c:"Each cell is the share of orders that arrived late for one courier and region. BudgetShip is late 69% to 75% of the time in Luzon, Visayas, and Mindanao, while SpeedyEx in NCR is late under 8%. Mindanao and Visayas have the slowest deliveries."},
+{u:"images/highvaluepage3.png",t:"Drill-down: highest cancellations",c:"The decomposition tree splits cancelled orders by payment method. With COD selected, it is the biggest group at 659 cancelled orders."},
+{u:"images/lowvaluepage3.png",t:"Drill-down: lowest cancellations",c:"With Maya selected, the tree shows the smallest group at 113 cancelled orders, about one sixth of COD."}]},
 {t:"POS Data Pipeline",y:"2026, synthetic data",d:"Synthetic multi-branch POS data flows through an incremental ETL into a star-schema warehouse and a Power BI dashboard.",b:["Incremental ETL in Python with watermarks and idempotent upserts, run in one transaction so a failed load leaves no partial data.","Star schema with four dimensions, a Type 2 slowly changing dimension for price history, and reconciliation checks between layers.","Power BI dashboard with DAX measures for revenue, gross margin, transactions, and average basket."],s:"About 107K sales, 267K line items, 5 branches, 12 months.",g:["Python","SQL","PostgreSQL","Supabase","Power BI","ETL"],l:"https://github.com/JV44-py/pos-data-pipeline",i:"images/dashboard.png",a:"Power BI sales dashboard"},
 {t:"Centralized POS and Inventory System",y:"Thesis capstone, 2024 to 2025",d:"One real-time system for a 4-branch retail client in Nueva Vizcaya, replacing a fragmented Android POS and Excel tracking.",b:["Barcode scanning, digital receipts, and low-stock and expiry alerts.","Cash, GCash, and wholesale pay-later payments, with role-based access for four user levels.","Built with Agile, ERD, and Use Case modeling."],s:"ISO 9126 score: 4.55 out of 5 from 31 respondents.",g:["JavaScript","Bootstrap","Supabase","PostgreSQL","Figma"]},
 {t:"IT Service Desk Ticketing App",y:"2026",d:"A Power Apps ticketing app with separate screens for requesters and staff.",b:["Live status dashboard built with Power Fx, plus validated forms with search and filtering.","Per-status email notifications automated with Power Automate.","Fixed delegation warnings and Dataverse choice-column type mismatches."],g:["Power Apps","Power Fx","Dataverse","Power Automate"]},
@@ -141,12 +150,12 @@ $("#nav").innerHTML=PAGES.map(p=>`<li><a href="#${p[0]}" data-p="${p[0]}">${p[1]
 let z=0;const sym=n=>{const w=n.replace(/[^A-Za-z]+/g," ").trim().split(" ");return w.length>1?w[0][0].toUpperCase()+w[1][0].toLowerCase():w[0][0].toUpperCase()+(w[0][1]||"").toLowerCase()};
 $("#tbl").innerHTML=SKILLS.map(s=>`<div class="grp"><h3>${s[0]}</h3><div class="tiles">${s[1].split("|").map(n=>`<div class="tile"><small>${++z}</small><b>${sym(n)}</b><span>${n}</span></div>`).join("")}</div></div>`).join("");
 $("#log").innerHTML=LOG.map(q=>`<div class="q"><span class="when">${q[0]}</span><h3 class="t">${q[1]}</h3><div class="dim">${q[2]}</div><ul class="b">${li(q[3])}</ul></div>`).join("");
-$("#pj").innerHTML=PROJ.map(p=>`<article class="pj"><div class="ph"><h3>${p.t}</h3><span>${p.y}</span></div><p class="dim">${p.d}</p><ul class="b">${li(p.b)}</ul>${p.s?`<div class="res">Result: ${p.s}</div>`:""}${p.i?`<img src="${p.i}" alt="${p.a}" loading="lazy" onerror="this.remove()">`:""}<div>${p.g.map(x=>`<span class="chip">${x}</span>`).join("")}</div>${p.l?`<a class="lnk" href="${p.l}" target="_blank" rel="noopener">View repository</a>`:""}</article>`).join("");
+$("#pj").innerHTML=PROJ.map(p=>`<article class="pj"><div class="ph"><h3>${p.t}</h3><span>${p.y}</span></div><p class="dim">${p.d}</p><ul class="b">${li(p.b)}</ul>${p.s?`<div class="res">Result: ${p.s}</div>`:""}${p.i?`<img src="${p.i}" alt="${p.a}" loading="lazy" onerror="this.remove()">`:""}${p.m?`<div class="gal">${p.m.map(x=>`<figure><img src="${x.u}" alt="Power BI dashboard: ${x.t}" loading="lazy" onerror="this.remove()"><figcaption><b>${x.t}</b>${x.c}</figcaption></figure>`).join("")}</div>`:""}<div>${p.g.map(x=>`<span class="chip">${x}</span>`).join("")}</div>${p.l?`<a class="lnk" href="${p.l}" target="_blank" rel="noopener">View repository</a>`:""}</article>`).join("");
 
 /* interactive atom network */
 const RM=matchMedia("(prefers-reduced-motion:reduce)").matches,cv=$("#sky"),cx=cv.getContext("2d");
 let W,H,N=[],M={x:-999,y:-999},D=null,col="245,245,245";
-const root=document.documentElement,skip="a,button,.pj,.tile,.log,.cl,nav,img";
+const root=document.documentElement,skip="a,button,.pj,.tile,.log,.cl,#lb,nav,img";
 const mk=(x,y)=>({x,y,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,r:1.4+Math.random()*2.6});
 function size(){const d=devicePixelRatio||1;W=innerWidth;H=innerHeight;cv.width=W*d;cv.height=H*d;cx.setTransform(d,0,0,d,0,0)}
 function seed(){N=[];for(let i=0;i<Math.min(95,W*H/13000|0);i++)N.push(mk(Math.random()*W,Math.random()*H))}
@@ -176,6 +185,8 @@ $("#th").addEventListener("click",()=>{const t=root.dataset.theme==="dark"?"ligh
 try{const s=localStorage.getItem("theme");if(s)root.dataset.theme=s}catch(e){}
 size();seed();theme();frame();
 
+document.addEventListener("click",e=>{const i=e.target.closest(".gal img");if(i){$("#lb img").src=i.src;$("#lb").classList.add("on")}else if(e.target.closest("#lb"))$("#lb").classList.remove("on")});
+addEventListener("keydown",e=>{if(e.key==="Escape")$("#lb").classList.remove("on")});
 /* scroll reveal + active nav */
 document.querySelectorAll("h1,h2,#home p,.ava,.soc,.grp,.q,.pj,.cl li").forEach(el=>{el.classList.add("rv");el.style.setProperty("--d",Math.min([...el.parentElement.children].indexOf(el),8)*.08+"s")});
 document.querySelectorAll(".tile").forEach(t=>t.style.setProperty("--i",[...t.parentElement.children].indexOf(t)));
